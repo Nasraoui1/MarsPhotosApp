@@ -39,6 +39,7 @@ import com.example.marsphotos.ui.theme.MarsPhotosTheme
 fun HomeScreen(
     marsUiState: MarsUiState,
     modifier: Modifier = Modifier,
+    contentPadding: PaddingValues = PaddingValues(0.dp),
 ) {
     when (marsUiState) {
         is MarsUiState.Loading -> LoadingScreen(modifier = modifier.fillMaxSize())
@@ -49,8 +50,9 @@ fun HomeScreen(
     }
 }
 
-
-
+/**
+ * The home screen displaying the loading message.
+ */
 @Composable
 fun LoadingScreen(modifier: Modifier = Modifier) {
     Image(
@@ -60,6 +62,9 @@ fun LoadingScreen(modifier: Modifier = Modifier) {
     )
 }
 
+/**
+ * The home screen displaying error message with re-attempt button.
+ */
 @Composable
 fun ErrorScreen(modifier: Modifier = Modifier) {
     Column(
@@ -73,6 +78,7 @@ fun ErrorScreen(modifier: Modifier = Modifier) {
         Text(text = stringResource(R.string.loading_failed), modifier = Modifier.padding(16.dp))
     }
 }
+
 /**
  * ResultScreen displaying number of photos retrieved.
  */
@@ -86,10 +92,7 @@ fun ResultScreen(photos: String, modifier: Modifier = Modifier) {
     }
 }
 
-@Preview(showBackground = true)
-@Composable
-fun ResultScreenPreview() {
-    MarsPhotosTheme {
-        ResultScreen(stringResource(R.string.placeholder_result))
-    }
-}
+
+
+
+
